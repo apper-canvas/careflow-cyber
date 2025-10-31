@@ -7,7 +7,7 @@ import ApperIcon from "@/components/ApperIcon";
 import patientService from "@/services/api/patientService";
 
 const PatientFormModal = ({ onClose, onSuccess }) => {
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     dateOfBirth: "",
@@ -21,6 +21,7 @@ const PatientFormModal = ({ onClose, onSuccess }) => {
     emergencyContactRelationship: "",
     emergencyContactPhone: "",
     medicalHistory: "",
+    remarks: "",
     currentDepartment: "General Medicine",
     admissionDate: new Date().toISOString().split("T")[0]
   });
@@ -255,7 +256,7 @@ const PatientFormModal = ({ onClose, onSuccess }) => {
                   required
                 />
               </div>
-              <div className="mt-4 space-y-2">
+<div className="mt-4 space-y-2">
                 <label htmlFor="medicalHistory" className="block text-sm font-medium text-gray-700">
                   Medical History
                 </label>
@@ -267,6 +268,21 @@ const PatientFormModal = ({ onClose, onSuccess }) => {
                   rows={3}
                   className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
                   placeholder="Enter medical history..."
+                ></textarea>
+              </div>
+
+              <div className="mt-4 space-y-2">
+                <label htmlFor="remarks" className="block text-sm font-medium text-gray-700">
+                  Remarks/Notes
+                </label>
+                <textarea
+                  id="remarks"
+                  name="remarks"
+                  value={formData.remarks}
+                  onChange={handleChange}
+                  rows={3}
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  placeholder="Enter remarks or additional notes..."
                 ></textarea>
               </div>
             </div>
